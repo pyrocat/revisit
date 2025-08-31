@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "revisit"
+version = "0.1.0"
+description = "revisit.place"
+authors = ["leonid-dev <zvegencev.l@mail366.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = ">=5.0"
+djangorestframework = ">=3.15"
+psycopg2-binary = ">=2.9"
+django-cors-headers = ">=4.4"
+pillow = ">=10.4"
+pillow-heif = ">=0.17"
+exifread = ">=3.0.0"
+astral = ">=3.0"
+timezonefinder = ">=6.5.0"
+pytz = ">=2024.1"
+django-environ = ">=0.11.2"
+django-filter = ">=24.3"
+djangorestframework-gis = ">=1.2"
+pydantic = "^2.11.7"
+pydantic-settings = "^2.10.1"
+
+[tool.poetry.group.dev.dependencies]
+ipython = ">=8.37.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
