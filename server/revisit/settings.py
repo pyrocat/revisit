@@ -82,7 +82,7 @@ WSGI_APPLICATION = "revisit.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": env("POSTGRES_DB", default="revisit"),
+        "NAME": env("POSTGRES_DB", default="photospots"),
         "USER": env("POSTGRES_USER", default="postgres"),
         "PASSWORD": env("POSTGRES_PASSWORD", default="postgres"),
         "HOST": env("POSTGRES_HOST", default="localhost"),
@@ -140,7 +140,9 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
     ],
-    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticatedOrReadOnly"],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ],
     "DEFAULT_PAGINATION_CLASS": "spots.pagination.DefaultPageNumberPagination",
     "PAGE_SIZE": 20,
 }

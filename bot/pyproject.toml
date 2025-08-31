@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "revisit-bot"
+version = "0.1.0"
+description = "bot for revisit.place"
+authors = ["leonid-dev <zvegencev.l@mail366.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.5"
+aiogram = "^3.22.0"
+
+[tool.poetry.group.dev.dependencies]
+ipython = ">=8.37.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
