@@ -11,29 +11,30 @@ services:
       - "postgres_data:/var/lib/postgresql/data/"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d photospots"]
-      interval: 60s
+      interval: 10s
       timeout: 3s
       retries: 20
 
   web:
-    build: ./backend
-    env_file: ./backend/.env
+    image: revisit-server
+    build: ./server
+    env_file: ./server/.env
     depends_on:
       db:
         condition: service_healthy
     ports: ["8000:8000"]
     volumes:
-      - ./backend:/app
-      - media:/app/media
-    command: >
-      bash -lc "python manage.py migrate &&
-                python manage.py runserver 0.0.0.0:8000"
+      - ./server:/server
+      - media:/server/media
+    entrypoint:
+      bash -lc "poetry run python manage.py migrate &&
+                poetry run python manage.py runserver 0.0.0.0:8000"
 
-  bot:
-    build: ./bot
-    env_file: ./bot/.env
-    depends_on:
-      - web
+#  bot:
+#    build: ./bot
+#    env_file: ./bot/.env
+#    depends_on:
+#      - web
 
 volumes:
   postgres_data:
